@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Favour Ojo — Web Developer & Web Designer. I design, build and create digital experiences.">
+<meta name="theme-color" content="#050505">
+<title>Favour Ojo — Digital Designer & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--panel:#0d0d0d;--white:#f5f5f2;--muted:#92928e;--line:rgba(255,255,255,.14);--mono:"DM Mono",monospace;--sans:"Manrope",Arial,sans-serif;--pad:clamp(22px,6vw,92px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--white);font-family:var(--sans);overflow-x:hidden;cursor:none}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}::selection{background:#fff;color:#050505}
+#progress{position:fixed;z-index:1000;top:0;left:0;height:2px;background:#fff;width:0;transform-origin:left}
+.cursor,.cursor-ring{position:fixed;z-index:2000;pointer-events:none;left:0;top:0;border-radius:50%;transform:translate(-50%,-50%)}.cursor{width:6px;height:6px;background:#fff}.cursor-ring{width:34px;height:34px;border:1px solid rgba(255,255,255,.55);transition:width .25s,height .25s,background .25s}.cursor-ring.hover{width:62px;height:62px;background:rgba(255,255,255,.08)}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.loader{position:fixed;inset:0;background:#050505;z-index:1500;display:grid;place-items:center;transition:opacity .7s,visibility .7s}.loader.hide{opacity:0;visibility:hidden}.loader-inner{font:12px var(--mono);letter-spacing:.2em}.loader-line{height:1px;width:180px;background:#333;margin-top:18px;overflow:hidden}.loader-line:after{content:"";display:block;height:100%;width:100%;background:#fff;transform:translateX(-100%);animation:load 1.25s ease forwards}@keyframes load{to{transform:translateX(0)}}
+header{position:fixed;z-index:100;top:0;left:0;width:100%;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;transition:background .3s,border .3s,backdrop-filter .3s}header.scrolled{background:rgba(5,5,5,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.logo{font-weight:800;letter-spacing:-.08em;font-size:20px}.logo span{font-weight:400;color:#888}.nav{display:flex;gap:clamp(14px,2.5vw,34px);align-items:center}.nav a{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#aaa;transition:color .2s}.nav a:hover,.nav a.active{color:#fff}.menu{display:none;background:none;border:0;color:#fff;font-size:22px}
+.hero{min-height:100svh;padding:150px var(--pad) 55px;display:flex;flex-direction:column;justify-content:center;position:relative;isolation:isolate;overflow:hidden}.grid-bg{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:84px 84px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 75%,transparent);animation:gridmove 25s linear infinite}@keyframes gridmove{to{background-position:84px 84px}}.orb{position:absolute;width:42vw;height:42vw;max-width:600px;max-height:600px;border-radius:50%;right:-10vw;top:15%;z-index:-1;background:radial-gradient(circle,rgba(255,255,255,.09),rgba(255,255,255,.018) 40%,transparent 70%);filter:blur(8px);animation:float 9s ease-in-out infinite alternate}@keyframes float{to{transform:translate(-7vw,5vh) scale(1.12)}}.kicker{font:11px var(--mono);letter-spacing:.17em;color:#aaa;text-transform:uppercase;display:flex;align-items:center;gap:12px;opacity:0;animation:rise .8s .2s forwards}.kicker:before{content:"";width:28px;height:1px;background:#fff}.hero h1{font-size:clamp(54px,10.3vw,150px);line-height:.91;letter-spacing:-.095em;font-weight:700;margin:34px 0 26px;max-width:1100px}.hero h1 .line{display:block;overflow:hidden}.hero h1 .line span{display:block;transform:translateY(115%);animation:headline 1s cubic-bezier(.2,.75,.2,1) forwards}.hero h1 .line:nth-child(2) span{animation-delay:.13s}.hero h1 .line:nth-child(3) span{animation-delay:.26s}@keyframes headline{to{transform:translateY(0)}}@keyframes rise{to{opacity:1;transform:translateY(0)}}.hero-copy{max-width:480px;color:#aaa;font-size:clamp(14px,1.2vw,17px);line-height:1.8;opacity:0;animation:rise .8s .75s forwards}.hero-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:42px;opacity:0;animation:rise .8s .9s forwards}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:22px;padding:14px 18px;border:1px solid #eee;background:#f4f4f0;color:#050505;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;transition:background .25s,color .25s,transform .25s}.button:hover{background:#050505;color:#fff;transform:translateY(-3px)}.button.ghost{background:transparent;color:#fff;border-color:#555}.button.ghost:hover{background:#fff;color:#050505;border-color:#fff}.arrow{font-size:16px}.scroll-note{font:10px var(--mono);letter-spacing:.13em;color:#777;text-transform:uppercase}
+section{padding:clamp(88px,12vw,160px) var(--pad);position:relative}.section-top{display:flex;justify-content:space-between;align-items:flex-start;gap:25px;margin-bottom:55px}.eyebrow{font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#888}.section-title{font-size:clamp(38px,6vw,76px);line-height:1;letter-spacing:-.075em;margin:15px 0 0;font-weight:600}.section-index{font:11px var(--mono);color:#666}.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:start}.about-big{font-size:clamp(25px,3.2vw,42px);line-height:1.28;letter-spacing:-.055em}.about-big em{font-style:normal;color:#777}.about-text{color:#999;font-size:14px;line-height:1.95;max-width:510px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}.stat strong{font-size:27px;letter-spacing:-.06em;display:block}.stat span{font:9px var(--mono);color:#777;text-transform:uppercase;letter-spacing:.1em}
+.services{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.service-list{border-top:1px solid var(--line)}.service{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:20px;padding:25px 0;border-bottom:1px solid var(--line);transition:padding .3s}.service:hover{padding-left:14px;padding-right:14px}.service-num{font:11px var(--mono);color:#666}.service h3{font-size:clamp(21px,3vw,34px);font-weight:500;letter-spacing:-.05em;margin:0}.service p{color:#777;font-size:12px;margin:6px 0 0}.service-arrow{font-size:24px;color:#777;transition:transform .3s,color .3s}.service:hover .service-arrow{transform:translate(5px,-5px);color:#fff}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px 22px}.project-card:nth-child(even){margin-top:100px}.project-visual{aspect-ratio:1.34;background:#111;overflow:hidden;position:relative;border:1px solid #222}.project-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#191919,#070707);transition:transform .7s}.project-card:hover .project-visual:before{transform:scale(1.05)}.mock{position:absolute;inset:12% 9%;border:1px solid #555;background:#080808;box-shadow:0 20px 60px #000;overflow:hidden;transition:transform .6s}.project-card:hover .mock{transform:translateY(-7px) rotate(-1deg)}.mock-top{height:18px;border-bottom:1px solid #333;display:flex;align-items:center;gap:4px;padding:0 8px}.mock-top i{width:4px;height:4px;border-radius:50%;background:#777}.mock-content{padding:8%}.mock-label{font:6px var(--mono);letter-spacing:.15em;color:#777}.mock-head{font-size:clamp(17px,3vw,35px);font-weight:700;letter-spacing:-.08em;line-height:.95;margin:12px 0}.mock-line{height:3px;background:#555;width:60%;margin:6px 0}.mock-line.short{width:35%}.mock-cta{margin-top:14px;width:55px;height:15px;background:#eee}.mock-art{position:absolute;right:10%;bottom:10%;width:28%;height:38%;border:1px solid #666;transform:rotate(12deg);background:repeating-linear-gradient(135deg,#171717 0 7px,#303030 7px 8px)}.project-meta{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-top:18px}.project-meta h3{font-size:20px;margin:0;letter-spacing:-.04em}.project-meta p{color:#777;font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em;margin:7px 0}.project-link{font:11px var(--mono);color:#aaa}.project-link:hover{color:#fff}.project-note{font-size:11px;color:#666;margin-top:35px}
+.skills-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw}.skills-intro{color:#888;font-size:14px;line-height:1.8;max-width:340px}.skill-cloud{display:flex;flex-wrap:wrap;gap:10px}.skill{border:1px solid #333;border-radius:100px;padding:13px 18px;font:11px var(--mono);color:#ccc;transition:all .25s}.skill:hover{background:#fff;color:#050505;border-color:#fff;transform:translateY(-3px)}
+.timeline{max-width:850px;margin-left:auto}.timeline-item{display:grid;grid-template-columns:150px 1fr;gap:30px;padding:25px 0;border-top:1px solid var(--line)}.timeline-date{font:10px var(--mono);color:#777}.timeline-item h3{margin:0 0 7px;font-size:19px;font-weight:500}.timeline-item p{margin:0;color:#888;font-size:13px;line-height:1.7}
+.contact-section{padding-bottom:70px}.contact-box{border:1px solid #333;padding:clamp(30px,7vw,85px);position:relative;overflow:hidden}.contact-box:after{content:"FO";position:absolute;right:-2%;bottom:-35%;font-size:clamp(200px,35vw,480px);font-weight:800;letter-spacing:-.13em;color:rgba(255,255,255,.025);pointer-events:none}.contact-title{font-size:clamp(43px,8vw,100px);line-height:.95;letter-spacing:-.09em;max-width:900px;margin:20px 0 35px;position:relative;z-index:1}.contact-row{display:flex;justify-content:space-between;align-items:end;gap:30px;position:relative;z-index:1}.contact-copy{color:#888;font-size:13px;max-width:330px;line-height:1.8}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{border-bottom:1px solid #777;padding-bottom:5px;font:11px var(--mono);color:#ddd;margin-right:20px}
+footer{padding:28px var(--pad);display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);font:10px var(--mono);color:#777;text-transform:uppercase;letter-spacing:.08em}.backtop{color:#fff}
+@media(max-width:760px){body{cursor:auto}.cursor,.cursor-ring{display:none}header{padding:17px 22px}.menu{display:block}.nav{display:none;position:absolute;top:65px;left:0;right:0;background:#090909;padding:25px 22px 30px;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.nav.open{display:flex}.nav a{font-size:12px}.hero{padding-top:130px}.hero h1{font-size:clamp(52px,14vw,90px)}.hero-bottom{align-items:flex-start;flex-direction:column;gap:35px}.scroll-note{display:none}.section-top{margin-bottom:35px}.about-grid,.skills-wrap{grid-template-columns:1fr;gap:35px}.stats{max-width:450px}.service{grid-template-columns:35px 1fr auto;gap:12px;padding:22px 0}.service p{max-width:260px;line-height:1.6}.project-grid{grid-template-columns:1fr;gap:38px}.project-card:nth-child(even){margin-top:0}.project-visual{aspect-ratio:1.2}.timeline-item{grid-template-columns:90px 1fr;gap:15px}.contact-row{align-items:flex-start;flex-direction:column}footer{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+
+/* Dual accent palette: Electric Teal + Royal Blue */
+:root{
+  --accent:#00D1B2;
+  --accent-soft:rgba(0,209,178,.14);
+  --royal:#3B82F6;
+  --royal-soft:rgba(59,130,246,.16);
+}
+#progress{background:linear-gradient(90deg,var(--accent),var(--royal))}
+.orb{background:radial-gradient(circle at 35% 40%,rgba(0,209,178,.17),transparent 43%),radial-gradient(circle at 70% 60%,rgba(59,130,246,.17),transparent 48%)}
+.hero h1 .line:last-child span span{
+  background:linear-gradient(100deg,var(--accent) 8%,#48c9df 48%,var(--royal) 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+.button{background:linear-gradient(105deg,var(--accent),var(--royal));border-color:transparent;color:#050b12}
+.button:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+.button.ghost:hover{background:linear-gradient(105deg,var(--accent),var(--royal));color:#050b12;border-color:transparent}
+.section-index{color:var(--royal)}
+.service:nth-child(even) .service-num{color:var(--royal)}
+.service:nth-child(even):hover .service-arrow{color:var(--royal)}
+.project-card:nth-child(even) .project-link{color:var(--royal)}
+.project-card:nth-child(even) .project-link:hover{color:var(--accent)}
+.skill:nth-child(3n):hover{background:var(--royal);border-color:var(--royal);color:#fff}
+.contact-links a:nth-child(even):hover{color:var(--royal);border-color:var(--royal)}
+.backtop:hover{color:var(--royal);border-color:var(--royal)}
+::selection{background:var(--royal);color:#fff}
+@media(prefers-reduced-motion:no-preference){
+  .button{background-size:160% 100%;transition:background-position .35s ease,color .25s ease,border-color .25s ease}
+  .button:hover{background-position:100% 0}
+}
+
+
+/* Client conversion sections */
+.nav .nav-cta{color:#061014;background:linear-gradient(100deg,var(--accent),var(--royal));padding:11px 15px;border-radius:2px;font-weight:700}
+.nav .nav-cta:hover{color:#fff}
+.case-intro{display:flex;justify-content:space-between;gap:25px;align-items:center;border-top:1px solid var(--line);padding:22px 0;margin-bottom:34px}
+.case-intro p{max-width:650px;color:#999;font-size:13px;line-height:1.8;margin:0}
+.case-label{font:9px var(--mono);letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px 24px}
+.case-card:nth-child(3){grid-column:1/-1;max-width:calc(50% - 12px)}
+.case-art{height:310px;position:relative;overflow:hidden;border:1px solid #242a30;background:#10151a}
+.case-browser{position:absolute;inset:12% 10% 0;background:#0a0b0c;border:1px solid #414b51;box-shadow:0 15px 60px #000}
+.browser-dots{height:20px;border-bottom:1px solid #30383d;display:flex;gap:5px;align-items:center;padding-left:10px}.browser-dots i{width:5px;height:5px;border-radius:50%;background:#748087}
+.restaurant-screen{height:calc(100% - 20px);padding:8% 9%;position:relative;overflow:hidden;background:linear-gradient(120deg,#17231f,#0b1110)}
+.screen-kicker,.water-mark{font:8px var(--mono);letter-spacing:.15em;color:#a6c7b6}
+.restaurant-screen strong{display:block;font-size:clamp(30px,5vw,57px);line-height:.9;letter-spacing:-.08em;margin-top:24px;position:relative;z-index:1}
+.screen-button{display:inline-block;font:8px var(--mono);margin-top:20px;background:var(--accent);color:#06110f;padding:10px 13px;position:relative;z-index:1}
+.food-orbit{position:absolute;width:190px;height:190px;border-radius:50%;right:8%;bottom:-32%;border:22px solid rgba(0,209,178,.18);box-shadow:inset 0 0 0 15px rgba(59,130,246,.15),0 0 0 18px rgba(255,255,255,.035)}
+.fashion-art{background:linear-gradient(135deg,#d6c9b8,#8f8174)}
+.fashion-layout{position:absolute;inset:0;padding:26px;color:#171717;background:linear-gradient(110deg,rgba(255,255,255,.45),transparent 65%)}
+.fashion-brand{font:10px var(--mono);letter-spacing:.18em}
+.fashion-copy{position:absolute;left:9%;top:30%;z-index:2}
+.fashion-copy small{font:8px var(--mono);letter-spacing:.15em}
+.fashion-copy strong{display:block;font-size:clamp(27px,4vw,49px);line-height:.9;letter-spacing:-.08em;margin:15px 0}
+.fashion-copy span{font:8px var(--mono);border-bottom:1px solid #171717;padding-bottom:5px}
+.fashion-shape{position:absolute;width:43%;height:85%;right:6%;bottom:-13%;background:linear-gradient(140deg,#c6b4a0,#5a4a3f);border-radius:48% 48% 5% 5%;transform:rotate(-9deg);box-shadow:inset -20px 0 35px rgba(0,0,0,.18)}
+.water-art{background:radial-gradient(circle at 80% 20%,rgba(0,209,178,.2),transparent 38%),linear-gradient(135deg,#0a1722,#0c2938)}
+.water-screen{position:absolute;inset:12% 9%;border:1px solid rgba(100,190,220,.3);padding:8%;overflow:hidden;background:linear-gradient(130deg,rgba(4,18,28,.96),rgba(10,38,52,.8))}
+.water-screen strong{display:block;font-size:clamp(32px,5vw,58px);line-height:.9;letter-spacing:-.08em;margin-top:24px;position:relative;z-index:1}
+.water-screen p{max-width:260px;font-size:10px;color:#a9bdc7;line-height:1.6;position:relative;z-index:1}
+.water-cta{display:inline-block;font:8px var(--mono);background:var(--royal);padding:10px 13px;position:relative;z-index:1}
+.water-rings{position:absolute;right:-12%;bottom:-40%;width:220px;height:220px;border-radius:50%;border:1px solid rgba(0,209,178,.45);box-shadow:0 0 0 18px rgba(59,130,246,.08),0 0 0 38px rgba(0,209,178,.06)}
+.case-meta{display:flex;justify-content:space-between;gap:15px;margin-top:20px}
+.case-meta h3{font-size:25px;letter-spacing:-.06em;margin:8px 0}
+.case-summary{font-size:12px;line-height:1.7;color:#92999d;max-width:490px;margin:0}
+.case-number{font:12px var(--mono);color:#555}
+.case-details{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.case-details b{font:9px var(--mono);letter-spacing:.12em;color:var(--royal)}
+.case-details p{font-size:11px;line-height:1.7;color:#8e969b;margin:8px 0 0}
+.project-note a{color:var(--accent);border-bottom:1px solid var(--accent)}
+.pricing-intro{color:#92999d;font-size:13px;line-height:1.8;max-width:650px;margin:-25px 0 36px}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.price-card{border:1px solid #30383d;padding:28px 24px;background:linear-gradient(145deg,#0e1418,#080b0d);position:relative;display:flex;flex-direction:column;min-height:430px}
+.price-card.featured{border-color:var(--accent);box-shadow:0 0 35px rgba(0,209,178,.08)}
+.price-tag{font:9px var(--mono);letter-spacing:.12em;color:var(--royal)}
+.price-card h3{font-size:28px;letter-spacing:-.06em;margin:18px 0 8px}
+.price-desc{font-size:11px;line-height:1.7;color:#89949a;min-height:56px}
+.price-amount{font-size:35px;font-weight:700;letter-spacing:-.07em;margin:20px 0}
+.price-amount span{color:var(--accent);font-size:23px}
+.price-card ul{padding:18px 0 20px;margin:0;list-style:none;border-top:1px solid var(--line);flex:1}
+.price-card li{font-size:11px;color:#b0b8bc;padding:7px 0}
+.price-card li:before{content:"↗";color:var(--accent);margin-right:10px}
+.price-link{font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em;border:1px solid #46525a;padding:13px;text-align:center;transition:.25s}
+.price-link:hover{background:linear-gradient(100deg,var(--accent),var(--royal));color:#061014;border-color:transparent}
+.price-footnote{font-size:10px;color:#69747b;line-height:1.8;margin-top:22px;max-width:850px}
+.trust-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:9vw}
+.trust-lead{font-size:clamp(25px,3.5vw,43px);line-height:1.2;letter-spacing:-.06em;margin:0}
+.trust-note{font-size:12px;line-height:1.9;color:#8d989e;margin-top:24px}
+.trust-item{display:grid;grid-template-columns:35px 1fr;gap:15px;padding:20px 0;border-top:1px solid var(--line)}
+.trust-item>span{font:10px var(--mono);color:var(--accent)}
+.trust-item h3{font-size:17px;font-weight:500;margin:0 0 6px}
+.trust-item p{font-size:11px;line-height:1.7;color:#879198;margin:0}
+.honesty-note{margin-top:35px;border:1px solid #273c42;background:rgba(0,209,178,.045);padding:18px 20px;display:flex;gap:15px;align-items:center}
+.honesty-mark{font-size:20px;color:var(--accent)}
+.honesty-note p{font-size:11px;line-height:1.7;color:#a1adb2;margin:0}
+.faq-list{max-width:900px;margin-left:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line);padding:0}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:23px 0;font-size:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary span{font-size:20px;color:var(--accent);transition:transform .2s}
+.faq-item[open] summary span{transform:rotate(45deg)}
+.faq-item p{max-width:700px;color:#92999d;font-size:12px;line-height:1.9;margin:0 0 24px}
+.hire-section{padding-top:40px;padding-bottom:80px}
+.hire-panel{border:1px solid #273d46;background:radial-gradient(circle at 90% 20%,rgba(59,130,246,.14),transparent 32%),radial-gradient(circle at 75% 85%,rgba(0,209,178,.12),transparent 35%),#080d11;padding:clamp(30px,7vw,80px);display:flex;align-items:end;justify-content:space-between;gap:35px}
+.hire-panel h2{font-size:clamp(45px,8vw,94px);line-height:.9;letter-spacing:-.09em;margin:22px 0}
+.hire-panel h2 span{background:linear-gradient(90deg,var(--accent),var(--royal));background-clip:text;-webkit-background-clip:text;color:transparent}
+.hire-panel p{font-size:12px;color:#98a4aa;line-height:1.8;max-width:400px}
+.hire-actions{display:flex;flex-direction:column;align-items:flex-start;gap:18px;min-width:190px}
+.hire-secondary{font:10px var(--mono);color:#b3c0c6;border-bottom:1px solid #53616a;padding-bottom:6px}
+.lead-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:8vw}
+.lead-intro>p{font-size:14px;line-height:1.9;color:#929da3;margin-top:0}
+.lead-contact{margin-top:30px;display:flex;flex-direction:column;gap:8px}
+.lead-contact span{font:9px var(--mono);letter-spacing:.15em;color:var(--royal)}
+.lead-contact a{font-size:12px;color:#d6e0e5}
+.lead-form{border:1px solid #2c373e;padding:clamp(20px,4vw,35px);background:#090e12}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lead-form label,.full-label{display:flex;flex-direction:column;gap:9px;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#a8b3b9;margin-bottom:18px}
+.lead-form input,.lead-form select,.lead-form textarea{width:100%;background:#0e171d;border:1px solid #34434c;color:#f4f7f8;padding:13px 12px;border-radius:0;font:11px var(--sans);letter-spacing:0;text-transform:none;outline:none}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(0,209,178,.08)}
+.lead-form input::placeholder,.lead-form textarea::placeholder{color:#66747c}
+.lead-form textarea{resize:vertical;min-height:110px}
+.form-submit{cursor:pointer}
+.form-note{font-size:9px;line-height:1.7;color:#718089;margin:14px 0 0}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1}.case-card:nth-child(3){grid-column:auto;max-width:none}.case-grid{grid-template-columns:1fr 1fr}.trust-layout,.lead-layout{grid-template-columns:1fr;gap:35px}.hire-panel{align-items:flex-start;flex-direction:column}}
+@media(max-width:760px){.nav .nav-cta{padding:10px 13px}.case-grid{grid-template-columns:1fr;gap:42px}.case-art{height:260px}.case-details{grid-template-columns:1fr;gap:15px}.case-intro{align-items:flex-start;flex-direction:column}.price-grid{grid-template-columns:1fr}.price-card:last-child{grid-column:auto}.price-card{min-height:0}.price-desc{min-height:0}.form-row{grid-template-columns:1fr;gap:0}.hire-panel h2{font-size:clamp(44px,13vw,74px)}.faq-item summary{font-size:14px}}
+
+</style>
+</head>
+<body>
+<div id="progress"></div><div class="noise"></div><div class="cursor"></div><div class="cursor-ring"></div>
+<div class="loader" id="loader"><div class="loader-inner">FAVOUR OJO / PORTFOLIO<div class="loader-line"></div></div></div>
+<header id="header"><a class="logo" href="#home">F<span>/</span>O.</a><button class="menu" id="menu" aria-label="Toggle navigation">☰</button><nav class="nav" id="nav"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#projects">Work</a><a href="#pricing">Pricing</a><a href="#skills">Skills</a><a href="#contact">Contact</a><a class="nav-cta" href="#hire">Hire me ↗</a></nav></header>
+<main>
+<section class="hero" id="home"><div class="grid-bg"></div><div class="orb"></div><div class="kicker">Hello, I'm Favour Ojo <span style="color:#555">/</span> Independent creative</div>
+<h1><span class="line"><span>I DESIGN.</span></span><span class="line"><span>I BUILD.</span></span><span class="line"><span>I CREATE<span style="color:#777">.</span></span></span></h1>
+<p class="hero-copy">I'm a creative web developer and designer passionate about transforming ideas into beautiful, functional and engaging digital experiences.</p>
+<div class="hero-bottom"><div class="actions"><a class="button magnetic" href="#projects">Explore my work <span class="arrow">↘</span></a><a class="button ghost magnetic" href="#hire">Hire me <span class="arrow">↗</span></a></div><div class="scroll-note">Scroll to explore ↓</div></div></section>
+<section id="about"><div class="section-top reveal"><div><div class="eyebrow">01 / About me</div><h2 class="section-title">A little about<br>what I do.</h2></div><div class="section-index">ENUGU, NG<br>AVAILABLE FOR PROJECTS</div></div>
+<div class="about-grid"><div class="about-big reveal">I bring ideas to life through <em>thoughtful design</em> and purposeful code.</div><div class="reveal"><p class="about-text">I'm Favour Ojo, a web developer and designer who enjoys creating digital experiences that are clear, useful and visually memorable. I combine creative thinking with a growing technical toolkit to help people and businesses show up confidently online.</p><p class="about-text">From a first sketch to a finished responsive website, I care about the details — how it looks, how it feels and how well it works. I'm always learning, experimenting and building.</p><div class="stats"><div class="stat"><strong>02</strong><span>Creative disciplines</span></div><div class="stat"><strong>01</strong><span>Goal: useful design</span></div><div class="stat"><strong>100%</strong><span>Curiosity</span></div></div></div></div></section>
+<section class="services" id="services"><div class="section-top reveal"><div><div class="eyebrow">02 / What I do</div><h2 class="section-title">Skills into<br>solutions.</h2></div><div class="section-index">SERVICES</div></div><div class="service-list">
+<div class="service reveal"><span class="service-num">01</span><div><h3>Frontend Development</h3><p>Responsive, accessible websites built with clean, purposeful code.</p></div><span class="service-arrow">↗</span></div>
+<div class="service reveal"><span class="service-num">02</span><div><h3>Website Design</h3><p>Modern layouts and visual systems that make brands feel distinct.</p></div><span class="service-arrow">↗</span></div>
+<div class="service reveal"><span class="service-num">03</span><div><h3>Responsive Experiences</h3><p>Layouts that feel considered and intuitive on every screen size.</p></div><span class="service-arrow">↗</span></div>
+<div class="service reveal"><span class="service-num">04</span><div><h3>UI / UX Design</h3><p>User-focused interface concepts with clarity at their core.</p></div><span class="service-arrow">↗</span></div>
+<div class="service reveal"><span class="service-num">05</span><div><h3>Graphic Design</h3><p>Digital flyers and visual content that communicate with impact.</p></div><span class="service-arrow">↗</span></div>
+<div class="service reveal"><span class="service-num">06</span><div><h3>Brand Identity</h3><p>Consistent visual direction for people, projects and businesses.</p></div><span class="service-arrow">↗</span></div>
+</div></section>
+<section id="projects"><div class="section-top reveal"><div><div class="eyebrow">03 / Selected concepts</div><h2 class="section-title">Built around<br>real business needs.</h2></div><div class="section-index">3 CONCEPT CASE STUDIES</div></div>
+<div class="case-intro reveal"><p>These are self-initiated portfolio concepts created to demonstrate my design thinking and development direction. They are not commissioned client projects, and no business results are claimed.</p><span class="case-label">INDEPENDENT CONCEPT WORK</span></div>
+<div class="case-grid">
+<article class="case-card reveal"><div class="case-art restaurant-art"><div class="case-browser"><div class="browser-dots"><i></i><i></i><i></i></div><div class="restaurant-screen"><span class="screen-kicker">FRESH • LOCAL • MADE WITH CARE</span><strong>GOOD FOOD.<br>GOOD MOOD.</strong><span class="screen-button">VIEW THE MENU ↗</span><div class="food-orbit"></div></div></div></div><div class="case-meta"><div><span class="case-label">01 / HOSPITALITY WEBSITE · CONCEPT</span><h3>Gather & Grain</h3><p class="case-summary">A restaurant website concept designed to make menus, location details and enquiries easy to find on mobile.</p></div><span class="case-number">01</span></div><div class="case-details"><div><b>THE CHALLENGE</b><p>Customers need quick answers: what is on the menu, where the restaurant is and how to make an enquiry.</p></div><div><b>THE APPROACH</b><p>A bold food-led landing page, clear menu categories, opening-hours panel, location details and prominent reservation/contact actions.</p></div><div><b>DELIVERABLES</b><p>Responsive homepage · Menu layout · Contact flow · Mobile-first interface</p></div></div></article>
+<article class="case-card reveal"><div class="case-art fashion-art"><div class="fashion-layout"><span class="fashion-brand">FORME / STUDIO</span><div class="fashion-copy"><small>THE EVERYDAY EDIT</small><strong>STYLE THAT<br>FEELS LIKE YOU.</strong><span>DISCOVER THE COLLECTION ↗</span></div><div class="fashion-shape"></div></div></div><div class="case-meta"><div><span class="case-label">02 / E-COMMERCE UI · CONCEPT</span><h3>Forme Studio</h3><p class="case-summary">A fashion storefront concept focused on product discovery, clear categories and a confident brand presentation.</p></div><span class="case-number">02</span></div><div class="case-details"><div><b>THE CHALLENGE</b><p>A small fashion label needs to present collections clearly and help shoppers move from browsing to purchase.</p></div><div><b>THE APPROACH</b><p>Editorial product storytelling, category navigation, product-card system, size/fit information and a clear shopping journey.</p></div><div><b>DELIVERABLES</b><p>Storefront UI · Collection layout · Product page concept · Responsive design</p></div></div></article>
+<article class="case-card reveal"><div class="case-art water-art"><div class="water-screen"><span class="water-mark">CLEARFLOW / WATER SYSTEMS</span><strong>WATER YOU<br>CAN TRUST.</strong><p>Practical water treatment and supply solutions for communities and businesses.</p><span class="water-cta">REQUEST A CONSULTATION ↗</span><div class="water-rings"></div></div></div><div class="case-meta"><div><span class="case-label">03 / SERVICE BUSINESS · CONCEPT</span><h3>ClearFlow Water Systems</h3><p class="case-summary">A service website concept for a water-treatment provider, built around service clarity and consultation enquiries.</p></div><span class="case-number">03</span></div><div class="case-details"><div><b>THE CHALLENGE</b><p>Visitors need to understand treatment services, the provider's process and how to request an assessment.</p></div><div><b>THE APPROACH</b><p>Service-led navigation, a simple treatment-process overview, clear enquiry prompts and accessible educational content.</p></div><div><b>DELIVERABLES</b><p>Service landing page · Process section · Enquiry pathway · Responsive layout</p></div></div></article>
+</div><p class="project-note">Want to see a concept like one of these adapted to your business? <a href="#lead-form">Tell me about your project ↗</a></p></section>
+<section id="pricing"><div class="section-top reveal"><div><div class="eyebrow">04 / Straightforward pricing</div><h2 class="section-title">A clear starting<br>point for your idea.</h2></div><div class="section-index">PROJECT PACKAGES</div></div>
+<p class="pricing-intro reveal">Every business is different. These packages give you a starting point; I'll confirm the final scope and quote before work begins.</p>
+<div class="price-grid">
+<article class="price-card reveal"><span class="price-tag">01 / ESSENTIAL</span><h3>Starter</h3><p class="price-desc">A clean online home for an individual, personal brand or small business.</p><div class="price-amount">₦50,000<span>+</span></div><ul><li>Single-page website</li><li>Responsive mobile layout</li><li>WhatsApp / contact links</li><li>Basic on-page SEO setup</li><li>One revision round</li></ul><a class="price-link" href="#lead-form" data-package="Starter Website">Choose Starter ↗</a></article>
+<article class="price-card featured reveal"><span class="price-tag">02 / MOST POPULAR</span><h3>Business</h3><p class="price-desc">A professional multi-page website for a growing business.</p><div class="price-amount">₦100,000<span>+</span></div><ul><li>Up to five pages</li><li>Custom responsive design</li><li>Contact / enquiry form</li><li>Basic SEO setup</li><li>Two revision rounds</li></ul><a class="price-link" href="#lead-form" data-package="Business Website">Choose Business ↗</a></article>
+<article class="price-card reveal"><span class="price-tag">03 / CUSTOM BUILD</span><h3>Premium</h3><p class="price-desc">A more tailored experience for brands with specific goals and features.</p><div class="price-amount">₦200,000<span>+</span></div><ul><li>Custom page structure</li><li>Advanced UI and animations</li><li>Additional integrations</li><li>Enhanced enquiry journey</li><li>Three revision rounds</li></ul><a class="price-link" href="#lead-form" data-package="Premium Website">Discuss Premium ↗</a></article>
+</div><p class="price-footnote">Prices are indicative starting points in NGN. Domain, hosting, paid plugins, e-commerce/payment integrations and substantial content entry may be quoted separately. A written scope and timeline will be agreed before payment.</p></section>
+
+<section id="trust"><div class="section-top reveal"><div><div class="eyebrow">05 / The experience</div><h2 class="section-title">Good work.<br>Clear communication.</h2></div><div class="section-index">TRUST / PROCESS</div></div>
+<div class="trust-layout"><div class="trust-copy reveal"><p class="trust-lead">You should know what is happening with your project at every stage.</p><p class="trust-note">I'm building my independent client portfolio, so I won't publish invented testimonials or pretend concept projects were paid client work. As genuine projects are completed, this section can grow with verified feedback and real outcomes.</p></div><div class="trust-list">
+<div class="trust-item reveal"><span>01</span><div><h3>Clear scope before we start</h3><p>We agree on pages, features, deliverables, timeline and price in writing.</p></div></div>
+<div class="trust-item reveal"><span>02</span><div><h3>Mobile-first thinking</h3><p>Your website is designed to work smoothly across phones, tablets and desktops.</p></div></div>
+<div class="trust-item reveal"><span>03</span><div><h3>Progress you can follow</h3><p>You'll receive updates and have a chance to review agreed milestones.</p></div></div>
+<div class="trust-item reveal"><span>04</span><div><h3>Handover without guesswork</h3><p>You'll receive the agreed final files, links and basic guidance for your website.</p></div></div>
+</div></div>
+<div class="honesty-note reveal"><span class="honesty-mark">✳</span><p><strong>Real feedback belongs here.</strong> Once a client project is completed, I'll add their words with permission — never fabricated reviews.</p></div></section>
+
+<section id="faq"><div class="section-top reveal"><div><div class="eyebrow">06 / Questions, answered</div><h2 class="section-title">Before we<br>get started.</h2></div><div class="section-index">FAQ</div></div>
+<div class="faq-list">
+<details class="faq-item reveal"><summary>How long does a website take to build?<span>＋</span></summary><p>A simple one-page website may take around 5–10 working days. A larger website can take longer depending on the pages, content, features and how quickly feedback is provided. I'll give you a timeline after understanding the project.</p></details>
+<details class="faq-item reveal"><summary>Will my website work on phones?<span>＋</span></summary><p>Yes. Responsive design is part of the process, so the layout is planned for mobile, tablet and desktop screens.</p></details>
+<details class="faq-item reveal"><summary>Do you work with small businesses?<span>＋</span></summary><p>Yes. I welcome enquiries from small businesses, startups, creatives and individuals who need a professional online presence.</p></details>
+<details class="faq-item reveal"><summary>Do I need to provide the text and images?<span>＋</span></summary><p>Ideally, you provide your business information, logo, images and service details. If you need help organising the content or choosing suitable visuals, we can include that in the project scope.</p></details>
+<details class="faq-item reveal"><summary>Are domain name and hosting included?<span>＋</span></summary><p>They are not automatically included in the starting prices. I'll explain the available options and any recurring costs before you commit.</p></details>
+<details class="faq-item reveal"><summary>How do payments work?<span>＋</span></summary><p>After we agree on the scope and quote, I'll outline the payment milestones in writing. Work begins once the agreed initial payment is received.</p></details>
+<details class="faq-item reveal"><summary>Can you redesign my existing website?<span>＋</span></summary><p>Absolutely. Share your current website and what you'd like to improve. I'll review the scope and recommend a suitable approach.</p></details>
+</div></section>
+
+<section id="hire" class="hire-section"><div class="hire-panel reveal"><div><div class="eyebrow">07 / Available for selected projects</div><h2>LET'S MAKE<br>YOUR NEXT IDEA<br><span>REAL.</span></h2><p>Have a business that needs a better website? Let's talk about what you want to build and how I can help.</p></div><div class="hire-actions"><a class="button magnetic" href="#lead-form">Start a project <span class="arrow">↗</span></a><a class="hire-secondary" href="https://wa.me/2347033869276" target="_blank" rel="noreferrer">Prefer WhatsApp? Message me ↗</a></div></div></section>
+
+<section id="lead-form"><div class="section-top reveal"><div><div class="eyebrow">08 / Project enquiry</div><h2 class="section-title">Tell me what<br>you're planning.</h2></div><div class="section-index">LET'S GET STARTED</div></div>
+<div class="lead-layout"><div class="lead-intro reveal"><p>Share a few details about your idea. Your answers will be put into a WhatsApp message so we can discuss the project directly.</p><div class="lead-contact"><span>EMAIL</span><a href="mailto:favourojo2525@gmail.com">favourojo2525@gmail.com ↗</a></div><div class="lead-contact"><span>WHATSAPP</span><a href="https://wa.me/2347033869276" target="_blank" rel="noreferrer">+234 703 386 9276 ↗</a></div></div>
+<form class="lead-form reveal" id="projectForm"><div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="e.g. Alex Johnson" required></label><label>Business / brand<input name="business" placeholder="Your business name"></label></div><div class="form-row"><label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label><label>What do you need?<select name="service" required><option value="">Select a service</option><option>Business website</option><option>Landing page</option><option>E-commerce website</option><option>Website redesign</option><option>UI / UX design</option><option>Branding / graphic design</option><option>Other</option></select></label></div><div class="form-row"><label>Estimated budget<select name="budget"><option value="">Choose a range</option><option>Below ₦50,000</option><option>₦50,000 – ₦100,000</option><option>₦100,000 – ₦200,000</option><option>₦200,000+</option><option>Not sure yet</option></select></label><label>When would you like to start?<select name="timeline"><option value="">Choose a timeline</option><option>As soon as possible</option><option>Within 2–4 weeks</option><option>Within 1–3 months</option><option>Just exploring</option></select></label></div><label class="full-label">Tell me a little about the project<textarea name="details" rows="5" placeholder="What does your business do? What would you like the website to achieve?"></textarea></label><button class="button form-submit" type="submit">Send project enquiry <span class="arrow">↗</span></button><p class="form-note" id="formNote">This form opens WhatsApp with your project details ready to send. Nothing is submitted until you press Send in WhatsApp.</p></form></div></section>
+<section id="skills"><div class="section-top reveal"><div><div class="eyebrow">04 / Toolkit</div><h2 class="section-title">Tools of the<br>trade.</h2></div><div class="section-index">ALWAYS LEARNING</div></div><div class="skills-wrap"><p class="skills-intro reveal">A growing toolkit for designing and building useful digital experiences. I keep learning, testing and improving with every project.</p><div class="skill-cloud reveal"><span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Next.js</span><span class="skill">Responsive Design</span><span class="skill">UI / UX</span><span class="skill">Graphic Design</span><span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">VS Code</span></div></div></section>
+<section id="journey"><div class="section-top reveal"><div><div class="eyebrow">05 / The journey</div><h2 class="section-title">In progress.<br>On purpose.</h2></div><div class="section-index">LEARNING / BUILDING</div></div><div class="timeline">
+<div class="timeline-item reveal"><div class="timeline-date">NOW — ONGOING</div><div><h3>Growing as a creative developer</h3><p>Developing frontend skills, strengthening design thinking and building practical projects to solve real-world problems.</p></div></div>
+<div class="timeline-item reveal"><div class="timeline-date">PRACTICE</div><div><h3>Web design & visual communication</h3><p>Exploring layouts, typography, visual identity and user-friendly digital experiences.</p></div></div>
+<div class="timeline-item reveal"><div class="timeline-date">NEXT CHAPTER</div><div><h3>More projects. Bigger challenges.</h3><p>Continuing to learn modern tools, collaborate with people and turn ideas into finished work.</p></div></div>
+</div></section>
+<section class="contact-section" id="contact"><div class="contact-box reveal"><div class="eyebrow">09 / Get in touch</div><h2 class="contact-title">HAVE AN IDEA?<br>LET'S BUILD<br>SOMETHING GREAT.</h2><div class="contact-row"><p class="contact-copy">Have a project, an opportunity or just want to connect? Tell me what you're thinking. I'm always open to a good conversation.</p><div class="actions"><a class="button magnetic" href="mailto:favourojo2525@gmail.com">Email me <span class="arrow">↗</span></a><a class="button ghost magnetic" href="https://wa.me/2347033869276" target="_blank" rel="noreferrer">WhatsApp <span class="arrow">↗</span></a></div></div><div style="margin-top:45px;display:flex;gap:24px;flex-wrap:wrap"><a class="contact-links" href="https://ng.linkedin.com/in/favour-ojo-8460662b7" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="contact-links" href="https://github.com/Fav2525" target="_blank" rel="noreferrer">GitHub ↗</a><a class="contact-links" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></section>
+</main>
+<footer><span>© <span id="year"></span> Favour Ojo. Made with intention.</span><a class="backtop" href="#home">BACK TO TOP ↑</a><span>DESIGN / DEVELOP / REPEAT</span></footer>
+<script>
+const loader=document.getElementById('loader');window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hide'),650));
+const header=document.getElementById('header'),progress=document.getElementById('progress');
+function onScroll(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%';header.classList.toggle('scrolled',scrollY>30)}window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+document.getElementById('year').textContent=new Date().getFullYear();
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const cursor=document.querySelector('.cursor'),ring=document.querySelector('.cursor-ring');if(matchMedia('(pointer:fine)').matches){let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y;window.addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;cursor.style.left=x+'px';cursor.style.top=y+'px'});function follow(){rx+=(x-rx)*.16;ry+=(y-ry)*.16;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(follow)}follow();document.querySelectorAll('a,button,.service,.project-card').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))})}
+document.querySelectorAll('.magnetic').forEach(el=>{el.addEventListener('mousemove',e=>{if(innerWidth<760)return;const r=el.getBoundingClientRect();const dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2;el.style.transform=`translate(${dx*.08}px,${dy*.12}px)`});el.addEventListener('mouseleave',()=>el.style.transform='')});
+const sections=[...document.querySelectorAll('main section[id]')],links=[...nav.querySelectorAll('a')];const activeObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-40% 0px -50% 0px'});sections.forEach(s=>activeObserver.observe(s));
+
+const projectForm=document.getElementById('projectForm');
+if(projectForm){
+  projectForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!projectForm.reportValidity()) return;
+    const data=new FormData(projectForm);
+    const fields=[
+      'Hello Favour, I would like to discuss a project.',
+      '',
+      'Name: '+(data.get('name')||''),
+      'Business / brand: '+(data.get('business')||'Not provided'),
+      'Email: '+(data.get('email')||''),
+      'Service needed: '+(data.get('service')||''),
+      'Budget: '+(data.get('budget')||'Not decided'),
+      'Timeline: '+(data.get('timeline')||'Not decided'),
+      'Project details: '+(data.get('details')||'Not provided')
+    ];
+    const message=encodeURIComponent(fields.join('\n'));
+    window.open('https://wa.me/2347033869276?text='+message,'_blank','noopener');
+    document.getElementById('formNote').textContent='WhatsApp has opened with your enquiry prepared. Review it and press Send to deliver your message.';
+  });
+}
+document.querySelectorAll('.price-link').forEach(link=>link.addEventListener('click',()=>{
+  const select=document.querySelector('#projectForm select[name="service"]');
+  if(select) select.value='Business website';
+}));
+
+</script>
+</body></html>
